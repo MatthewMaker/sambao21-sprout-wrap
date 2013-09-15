@@ -1,4 +1,4 @@
-# These are the active corner options with the matchin int used by the recipe
+# These are the active corner options with the matching int used by the recipe
 # active_corner_value_to_int = {
 #   desktop:               4,
 #   dashboard:             7,
