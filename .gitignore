@@ -1,3 +1,5 @@
 tmp/
 cookbooks/
 Cheffile.lock
+!bin/
+out.txt
