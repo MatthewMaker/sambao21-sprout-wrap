@@ -1,3 +1,3 @@
 node.default["finder_preferences"]= {
-  "AppleShowAllFiles" => true
+  "AppleShowAllFiles" => false
 }
