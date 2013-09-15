@@ -50,6 +50,8 @@ recipes:
 - sambao21_workstation::alfred
 - sambao21_workstation::virtualbox
 - sambao21_workstation::vagrant
+- sambao21_workstation::unity3
+- sambao21_workstation::unity3_shaders
 node_attributes:
   versions:
     rvm: stable
