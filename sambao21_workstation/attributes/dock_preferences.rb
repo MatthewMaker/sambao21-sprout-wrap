@@ -1,5 +1,5 @@
 node.default["dock_preferences"]= {
-  "orientation" => "bottom",
+  "orientation" => "left",
   "autohide" => true,
   "magnification" => true,
   "tilesize" => 35,
