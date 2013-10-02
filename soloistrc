@@ -19,6 +19,7 @@ recipes:
 - sprout-osx-apps::ctags_exuberant
 - sambao21_workstation::ctags_for_ruby
 - sambao21_workstation::vimrc
+- sambao21_workstation::addloginitem
 - sambao21_workstation::synergy
 - sambao21_workstation::disk-inventory-x
 - sambao21_workstation::dock_preferences
