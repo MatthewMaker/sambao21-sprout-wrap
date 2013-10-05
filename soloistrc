@@ -30,6 +30,7 @@ recipes:
 - sambao21_workstation::emacs
 - sambao21_workstation::the-unarchiver
 - sambao21_workstation::gimp
+- sambao21_workstation::fluid
 - sambao21_workstation::iphone-configuration-utility
 - sambao21_workstation::testflight
 - sambao21_workstation::lime-chat
