@@ -1,5 +1,6 @@
 recipes:
 - sambao21_workstation::developermode
+- sambao21_workstation::remove_bad_root_certificates
 - pivotal_workstation::create_var_chef_cache
 - sprout-osx-base::homebrew
 - homebrew::cask
