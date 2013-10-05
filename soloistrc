@@ -20,6 +20,7 @@ recipes:
 - sambao21_workstation::ctags_for_ruby
 - sambao21_workstation::vimrc
 - sambao21_workstation::vitamin-r
+- sambao21_workstation::sidplay
 - sambao21_workstation::addloginitem
 - sambao21_workstation::clementine
 - sambao21_workstation::slife
