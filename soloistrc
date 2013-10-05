@@ -21,6 +21,7 @@ recipes:
 - sambao21_workstation::vimrc
 - sambao21_workstation::vitamin-r
 - sambao21_workstation::addloginitem
+- sambao21_workstation::clementine
 - sambao21_workstation::synergy
 - sambao21_workstation::disk-inventory-x
 - sambao21_workstation::dock_preferences
