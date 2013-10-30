@@ -4,6 +4,7 @@ recipes:
 - pivotal_workstation::create_var_chef_cache
 - sprout-osx-base::homebrew
 - homebrew::cask
+- sambao21_workstation::adium
 - sambao21_workstation::jing
 - sambao21_workstation::skype2
 - sambao21_workstation::pacifist
