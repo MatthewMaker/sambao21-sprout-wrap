@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>FUUserscripts</key>
+	<array>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Reader</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>URLPattern</key>
+					<string>*google.com*reader*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>URLPattern</key>
+					<string>*reader*google.com*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+			</array>
+			<key>source</key>
+			<string>window.fluid.dockBadge = '';
+setTimeout(updateDockBadge, 1000);
+setTimeout(updateDockBadge, 3000);
+setInterval(updateDockBadge, 5000);
+
+function updateDockBadge() {
+	var newBadge = '';
+
+	var regex = /\s*\((\d+)\+?\)\s*/;
+
+	var text = '' + document.title;
+	if (text.length) {
+		console.log('text: ' + text);
+		var res = text.match(regex);
+		console.log('res: ' + res);
+		if (res &amp;&amp; res.length &gt; 1) {
+			newBadge = res[1];
+			console.log('newBadge: ' + newBadge);
+		}
+	}
+	window.fluid.dockBadge = newBadge;
+}</string>
+		</dict>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Gmail</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>URLPattern</key>
+					<string>*gmail.com*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>URLPattern</key>
+					<string>*mail.google.com*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>URLPattern</key>
+					<string>*google.com*mail</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+			</array>
+			<key>source</key>
+			<string>window.fluid.dockBadge = '';
+setTimeout(updateDockBadge, 1000);
+setTimeout(updateDockBadge, 3000);
+setInterval(updateDockBadge, 5000);
+
+function updateDockBadge() {
+	var newBadge = '';
+
+	// find canvas iframe
+	var canvas = document.getElementById('canvas_frame');
+	//console.log('canvas: ' + canvas);
+
+	// get iframe document
+	var doc = canvas.contentDocument;
+	//console.log('canvas.contentDocument: ' + canvas.contentDocument);
+
+	// loop thru anchor tags
+	var anchorEls = doc.getElementsByTagName('a');
+	//console.log('anchors: ' + anchorEls.length);
+
+	var regex = /\s*Inbox\s*\((\d+)\)[^\d]*/;
+	for (var i = 0; i &lt; anchorEls.length; i++) {
+		var anchorEl = anchorEls[i];
+		//console.log('anchorEl: '+ anchorEl);
+		
+		var text = '' + anchorEl.innerText;
+		if (!text.length) continue;
+		if (-1 == text.indexOf('(')) continue;
+		var res = text.match(regex);
+		if (res &amp;&amp; res.length &gt; 1) {
+			//console.log('res: '+ res);
+			newBadge = res[1];
+			break;
+		}
+	}
+
+	window.fluid.dockBadge = newBadge;
+}
+</string>
+		</dict>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Facebook</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>URLPattern</key>
+					<string>*facebook.com*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+			</array>
+			<key>source</key>
+			<string>window.fluid.dockBadge = '';
+setTimeout(updateDockBadge, 1000);
+setTimeout(updateDockBadge, 3000);
+setInterval(updateDockBadge, 5000);
+
+function updateDockBadge() {
+	var newBadge = '';
+
+	var regex = /\s*\((\d+)\)\s*/;
+
+	var text = '' + document.title;
+	if (text.length) {
+		console.log('text: ' + text);
+		var res = text.match(regex);
+		console.log('res: ' + res);
+		if (res &amp;&amp; res.length &gt; 1) {
+			newBadge = res[1];
+			console.log('newBadge: ' + newBadge);
+		}
+	}
+	window.fluid.dockBadge = newBadge;
+}</string>
+		</dict>
+		<dict>
+			<key>enabled</key>
+			<false/>
+			<key>name</key>
+			<string>Social Fixer</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>URLPattern</key>
+					<string>http://*.facebook.com/*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>URLPattern</key>
+					<string>http://facebook.com/*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>URLPattern</key>
+					<string>https://*.facebook.com/*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>URLPattern</key>
+					<string>https://facebook.com/*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>URLPattern</key>
+					<string>http://*.facebook.tld/*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>URLPattern</key>
+					<string>http://facebook.tld/*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>URLPattern</key>
+					<string>https://*.facebook.tld/*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>URLPattern</key>
+					<string>https://facebook.tld/*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+			</array>
+			<key>source</key>
+			<string>// ==UserScript==
+// @name          Growl Notifications with messages for campfire and fluid
+// @namespace     http://tim.theenchanter.com/
+// @description   If your name is mentioned in a message, a growl notification shows what was said.
+// @author        Tim Harper
+// @homepage      http://tim.theenchanter.com/
+// @include       *.campfirenow.com/room*
+// @version       0.2
+// ==/UserScript==
+
+try { if ( typeof(Campfire) != "undefined" ) {
+  var growler;
+  
+  Campfire.window_is_focused = true;
+  Event.observe(window, 'blur', function() { Campfire.window_is_focused = false; });
+  Event.observe(window, 'focus', function() { Campfire.window_is_focused = true; });
+  
+  function setCookie(name, value, days) { 
+    var expire_str = days ? ";expires="+(new Date(new Date().getTime() + days*24*60*60*1000)).toGMTString() : "";
+    document.cookie = (name + "=" + escape(value)) + (expire_str); 
+  }
+  function getCookie(name) {
+    return $A(document.cookie.split(";")).map(function(c) {
+      var parts = c.split("=");
+      if (parts[0].toString().strip()==name) 
+        return unescape(parts[1]);
+      else
+        return undefined;
+    }).compact().first();
+  }  function getCookie(name) {
+    return $A(document.cookie.split(";")).map(function(c) {
+      var parts = c.split("=");
+      if (parts[0].toString().strip()==name) 
+        return unescape(parts[1]);
+      else
+        return undefined;
+    }).compact().first();
+  }
+  
+  // remove 37 signals growl implementation to prevent double-growl
+  if(Campfire.Responders.indexOf("GrowlNotifier")) {
+    window.chat.listeners.splice(10,1);
+    Campfire.Responders.splice(10,1);
+  }
+
+  Campfire.FluidGrowler = Class.create({
+    initialize: function(chat) {
+      this.chat = chat;
+      this.pattern = new RegExp("^" + RegExp.escape(this.chat.username));
+      
+      this.room = $('room_name').innerHTML;
+      this.room_id = this.room.toLowerCase().gsub(/[^a-z0-9]/, "");
+      this.showConfigForm();
+      this.loadRoomSettings();
+      this.populateSettings();
+      this.saveRoomSettings(); // Keep the cookie alive
+    },
+
+    onMessagesInserted: function(messages) {
+      if(Campfire.window_is_focused) return;
+      for (var i = 0; i &lt; messages.length; i++) {
+        var message = messages[i];
+        if (message.kind == "text") {
+          var bodyElement = message.bodyElement();
+          var body = bodyElement.innerHTML.unescapeHTML();
+
+          if (this.shouldGrowl(body)) {
+            var bodyElement = message.bodyElement();
+            window.fluid.showGrowlNotification({
+              title: document.title,
+              description: "(" + message.author() + ") " + body,
+              priority: 1,
+              sticky: this.shouldStick(body),
+              onclick: function() {
+                bodyElement.visualEffect("highlight", { duration: 2 });
+              }
+            });
+          }
+        }
+      }
+    },
+    matchesTrigger: function(message) {
+      var trigger = this.room_settings.get("trigger").strip();
+      if (trigger.empty()) return false;
+      var matcher = new RegExp("\\b" + trigger + "\\b", "i");
+      if (matcher.exec(message)) return true;
+      return false;
+    },
+    shouldStick: function(message) {
+      if(this.room_settings.get("growl_when") == "always")
+        return false;
+      else
+        return (this.matchesTrigger(message));
+    },
+    shouldGrowl: function(message) {
+      switch(this.room_settings.get("growl_when")) {
+        case "always":
+        case "always_with_stick":
+        return true;
+
+        default:
+        return (this.matchesTrigger(message));
+      };
+    },
+    showConfigForm: function() {
+      if ($('growl_config_div')) $('growl_config_div').remove();
+      new Insertion.After('participants', "\
+      &lt;div id='growl_config_div'&gt;\
+      &lt;h3&gt;Growl:&lt;/h3&gt;\
+      &lt;div id='debug'&gt;&lt;/div&gt;\
+      &lt;form id='growl_form' style='font-size: 10px'&gt;\
+        &lt;div&gt;&lt;input type='radio' name='growl_when' id='growl_always' value='always' /&gt; Always&lt;/div&gt;\
+        &lt;div&gt;&lt;input type='radio' name='growl_when' id='growl_always_with_stick' value='always_with_stick' /&gt; Always, but stick on regex&lt;/div&gt;\
+        &lt;div&gt;&lt;input type='radio' name='growl_when' id='growl_only_on_regex' value='only_on_regex' /&gt; Only on regex&lt;/div&gt;\
+        &lt;div id='growl_trigger_div'&gt;Regex: /\\b&lt;input type='text' name='trigger' id='growl_trigger'/&gt;\\b/i&lt;/div&gt;\
+      &lt;/form&gt;\
+      &lt;/div&gt;\
+      ");
+      var that = this;
+      
+      $w("growl_always growl_always_with_stick growl_only_on_regex growl_trigger").each( function(e_id) {
+        Event.observe(e_id, 'change', function(e) {
+          this.extractSettings();
+          this.setGrowlTriggerVisibility();
+        }.bindAsEventListener(that));
+      });
+    },
+    populateSettings: function() {
+      var growl_when = this.room_settings.get("growl_when");
+      var radio = $("growl_" + growl_when);
+      if(radio) radio.checked = true;
+      $('growl_trigger').value = this.room_settings.get("trigger");
+      this.setGrowlTriggerVisibility();
+    },
+    extractSettings: function() {
+      this.room_settings = $H(Form.serialize('growl_form', true));
+      this.saveRoomSettings();
+    },
+    setGrowlTriggerVisibility: function() {
+      $("growl_trigger_div").style.display = (this.room_settings.get("growl_when") == "always") ? "none" : "";
+    },
+    saveRoomSettings: function() {
+      setCookie("growl_settings_" + this.room_id, JSON.stringify(this.room_settings), 14);
+    },
+    loadRoomSettings: function() {
+      var serialized_settings = getCookie("growl_settings_" + this.room_id);
+      if (serialized_settings) {
+        try {
+          this.room_settings = $H(JSON.parse(serialized_settings));
+        } catch(e) {
+          alert("Error parsing settings. Using defaults");
+          this.room_settings = undefined;
+        };
+      }
+      if(!this.room_settings)
+        this.room_settings = $H({
+          growl_when: 'always',
+          trigger: window.chat.username
+        });
+    }
+  });
+  
+  Campfire.Responders.push("FluidGrowler");
+  window.fluid_growler = new Campfire.FluidGrowler(window.chat);
+  window.chat.listeners.push(fluid_growler );
+} } catch(e) { if(console) console.log(e); new Insertion.After('participants', e); }
+</string>
+		</dict>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Growl Notifications with messages for campfire and fluid</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>URLPattern</key>
+					<string>*.campfirenow.com/room*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+			</array>
+			<key>source</key>
+			<string>// ==UserScript==
+// @name          Growl Notifications with messages for campfire and fluid
+// @namespace     http://tim.theenchanter.com/
+// @description   If your name is mentioned in a message, a growl notification shows what was said.
+// @author        Tim Harper
+// @homepage      http://tim.theenchanter.com/
+// @include       *.campfirenow.com/room*
+// @version       0.2
+// ==/UserScript==
+
+try { if ( typeof(Campfire) != "undefined" ) {
+  var growler;
+  
+  Campfire.window_is_focused = true;
+  Event.observe(window, 'blur', function() { Campfire.window_is_focused = false; });
+  Event.observe(window, 'focus', function() { Campfire.window_is_focused = true; });
+  
+  function setCookie(name, value, days) { 
+    var expire_str = days ? ";expires="+(new Date(new Date().getTime() + days*24*60*60*1000)).toGMTString() : "";
+    document.cookie = (name + "=" + escape(value)) + (expire_str); 
+  }
+  function getCookie(name) {
+    return $A(document.cookie.split(";")).map(function(c) {
+      var parts = c.split("=");
+      if (parts[0].toString().strip()==name) 
+        return unescape(parts[1]);
+      else
+        return undefined;
+    }).compact().first();
+  }  function getCookie(name) {
+    return $A(document.cookie.split(";")).map(function(c) {
+      var parts = c.split("=");
+      if (parts[0].toString().strip()==name) 
+        return unescape(parts[1]);
+      else
+        return undefined;
+    }).compact().first();
+  }
+  
+  // remove 37 signals growl implementation to prevent double-growl
+  if(Campfire.Responders.indexOf("GrowlNotifier")) {
+    window.chat.listeners.splice(10,1);
+    Campfire.Responders.splice(10,1);
+  }
+
+  Campfire.FluidGrowler = Class.create({
+    initialize: function(chat) {
+      this.chat = chat;
+      this.pattern = new RegExp("^" + RegExp.escape(this.chat.username));
+      
+      this.room = $('room_name').innerHTML;
+      this.room_id = this.room.toLowerCase().gsub(/[^a-z0-9]/, "");
+      this.showConfigForm();
+      this.loadRoomSettings();
+      this.populateSettings();
+      this.saveRoomSettings(); // Keep the cookie alive
+    },
+
+    onMessagesInserted: function(messages) {
+      if(Campfire.window_is_focused) return;
+      for (var i = 0; i &lt; messages.length; i++) {
+        var message = messages[i];
+        if (message.kind == "text") {
+          var bodyElement = message.bodyElement();
+          var body = bodyElement.innerHTML.unescapeHTML();
+
+          if (this.shouldGrowl(body)) {
+            var bodyElement = message.bodyElement();
+            window.fluid.showGrowlNotification({
+              title: document.title,
+              description: "(" + message.author() + ") " + body,
+              priority: 1,
+              sticky: this.shouldStick(body),
+              onclick: function() {
+                bodyElement.visualEffect("highlight", { duration: 2 });
+              }
+            });
+          }
+        }
+      }
+    },
+    matchesTrigger: function(message) {
+      var trigger = this.room_settings.get("trigger").strip();
+      if (trigger.empty()) return false;
+      var matcher = new RegExp("\\b" + trigger + "\\b", "i");
+      if (matcher.exec(message)) return true;
+      return false;
+    },
+    shouldStick: function(message) {
+      if(this.room_settings.get("growl_when") == "always")
+        return false;
+      else
+        return (this.matchesTrigger(message));
+    },
+    shouldGrowl: function(message) {
+      switch(this.room_settings.get("growl_when")) {
+        case "always":
+        case "always_with_stick":
+        return true;
+
+        default:
+        return (this.matchesTrigger(message));
+      };
+    },
+    showConfigForm: function() {
+      if ($('growl_config_div')) $('growl_config_div').remove();
+      new Insertion.After('participants', "\
+      &lt;div id='growl_config_div'&gt;\
+      &lt;h3&gt;Growl:&lt;/h3&gt;\
+      &lt;div id='debug'&gt;&lt;/div&gt;\
+      &lt;form id='growl_form' style='font-size: 10px'&gt;\
+        &lt;div&gt;&lt;input type='radio' name='growl_when' id='growl_always' value='always' /&gt; Always&lt;/div&gt;\
+        &lt;div&gt;&lt;input type='radio' name='growl_when' id='growl_always_with_stick' value='always_with_stick' /&gt; Always, but stick on regex&lt;/div&gt;\
+        &lt;div&gt;&lt;input type='radio' name='growl_when' id='growl_only_on_regex' value='only_on_regex' /&gt; Only on regex&lt;/div&gt;\
+        &lt;div id='growl_trigger_div'&gt;Regex: /\\b&lt;input type='text' name='trigger' id='growl_trigger'/&gt;\\b/i&lt;/div&gt;\
+      &lt;/form&gt;\
+      &lt;/div&gt;\
+      ");
+      var that = this;
+      
+      $w("growl_always growl_always_with_stick growl_only_on_regex growl_trigger").each( function(e_id) {
+        Event.observe(e_id, 'change', function(e) {
+          this.extractSettings();
+          this.setGrowlTriggerVisibility();
+        }.bindAsEventListener(that));
+      });
+    },
+    populateSettings: function() {
+      var growl_when = this.room_settings.get("growl_when");
+      var radio = $("growl_" + growl_when);
+      if(radio) radio.checked = true;
+      $('growl_trigger').value = this.room_settings.get("trigger");
+      this.setGrowlTriggerVisibility();
+    },
+    extractSettings: function() {
+      this.room_settings = $H(Form.serialize('growl_form', true));
+      this.saveRoomSettings();
+    },
+    setGrowlTriggerVisibility: function() {
+      $("growl_trigger_div").style.display = (this.room_settings.get("growl_when") == "always") ? "none" : "";
+    },
+    saveRoomSettings: function() {
+      setCookie("growl_settings_" + this.room_id, JSON.stringify(this.room_settings), 14);
+    },
+    loadRoomSettings: function() {
+      var serialized_settings = getCookie("growl_settings_" + this.room_id);
+      if (serialized_settings) {
+        try {
+          this.room_settings = $H(JSON.parse(serialized_settings));
+        } catch(e) {
+          alert("Error parsing settings. Using defaults");
+          this.room_settings = undefined;
+        };
+      }
+      if(!this.room_settings)
+        this.room_settings = $H({
+          growl_when: 'always',
+          trigger: window.chat.username
+        });
+    }
+  });
+  
+  Campfire.Responders.push("FluidGrowler");
+  window.fluid_growler = new Campfire.FluidGrowler(window.chat);
+  window.chat.listeners.push(fluid_growler );
+} } catch(e) { if(console) console.log(e); new Insertion.After('participants', e); }
+</string>
+		</dict>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Facebook Ad Remover</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>URLPattern</key>
+					<string>*facebook.com*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>URLPattern</key>
+					<string>*facebook.tld*</string>
+					<key>enabled</key>
+					<true/>
+				</dict>
+			</array>
+			<key>source</key>
+			<string>// ==UserScript==
+// @name           Facebook Ad Remover
+// @description    Removes annoying Facebook ads everywhere and expands viewing area, works with apps
+// @author         Caleb Jardine, modified from Rohit Mewada script
+// @include        http://*.facebook.*
+// @include        https://*.facebook.*
+// @grant          metadata
+// @version        1.0
+// ==/UserScript==
+
+//Parent Element To Ads
+grandparent = document.getElementById('globalContainer'); 
+var removeAdz = function(){
+//Ads
+if(document.getElementById('ego_unit_container'))
+    document.getElementById('ego_unit_container').style.visibility = 'hidden';
+if(document.getElementById('pagelet_ego_pane_w'))
+    document.getElementById('pagelet_ego_pane_w').style.visibility = 'hidden';
+if(document.getElementById('pagelet_reminders'))
+    document.getElementById('pagelet_reminders').style.visibility = 'hidden'; 
+if(document.getElementById('pagelet_rhc_footer'))
+    document.getElementById('pagelet_rhc_footer').style.visibility = 'hidden';
+if(document.getElementById('pagelet_canvas_storybox'))
+    document.getElementById('pagelet_canvas_storybox').style.visibility = 'hidden'; 
+if(document.getElementById('pagelet_canvas_footer_content'))
+    document.getElementById('pagelet_canvas_footer_content').style.visibility = 'hidden'; 
+if(document.getElementById('pagelet_canvas_developer_upsell'))
+    document.getElementById('pagelet_canvas_developer_upsell').style.visibility = 'hidden'; 
+
+document.getElementById('globalContainer').style.paddingRight = '0px'; 
+document.getElementById('rightCol').style.width = '0px'; 
+document.getElementById('rightCol').style.visibility = 'hidden';
+//document.getElementById('contentArea').style.width = '90%'; 
+}
+//Below function happens whenever the contents of 
+//grandparent change
+grandparent.addEventListener("DOMSubtreeModified", removeAdz, true);
+//fires off the function to start with
+removeAdz();
+</string>
+		</dict>
+	</array>
+</dict>
+</plist>

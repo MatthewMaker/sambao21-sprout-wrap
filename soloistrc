@@ -8,6 +8,11 @@ recipes:
 - sambao21_workstation::jing
 - sambao21_workstation::skype2
 - sambao21_workstation::pacifist
+- sambao21_workstation::fluid-facebook
+- sambao21_workstation::fluid-google-calendar
+- sambao21_workstation::fluid-google-apps-monstrous
+- sambao21_workstation::fluid-google-apps-sasona
+- sambao21_workstation::fluid-twitter-mattmaker
 - sambao21_workstation::vitamin-r
 - sambao21_workstation::sidplay
 - sambao21_workstation::addloginitem
