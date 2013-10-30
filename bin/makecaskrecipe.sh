@@ -6,6 +6,7 @@
 
 # define a 'name' command-line string flag
 DEFINE_string 'name' 'world' 'name to say hello to' 'n'
+DEFINE_string 'cookbook' 'sambao21_workstation' 'cookbook folder' 'c'
 
 # parse the command-line
 FLAGS "$@" || exit 1
@@ -13,6 +14,8 @@ eval set -- "${FLAGS_ARGV}"
 
 # say hello
 echo "Hello, ${FLAGS_name}!"
+
+echo "cookbook: ${cookbook}"
 
 
 usage() { echo "Usage: $0 [-s <45|90>] [-p <string>]" 1>&2; exit 1; }
@@ -32,20 +35,30 @@ CommandLineOptions__debug_level=""
 set -o nounset
 set -e
 
+#zero args
+#if (($# == 0)); then
+#fi
+
 #
 #
 #
  
+
 top_folder=../$CommandLineOptions__cookbook
 recipe_folder=recipes
 recipe="$1"
-outfile="$top_folder/$recipe_folder/$recipe"
+outfile="${top_folder}/${recipe_folder}/${recipe}.rb"
+
+found=$(brew cask search ${recipe})
+if [ ! "$found" ]
+then
+    echo "${recipe}: not found in brew cask search"
+    exit 2
+fi
 
 if test -f "$outfile"
 then
     echo "$outfile: already exists"
-#    EXCEPTION=$Main__ParameterException
-#    EXCEPTION_MSG="missing new_recipe parameter"
     exit 1
 fi
 
