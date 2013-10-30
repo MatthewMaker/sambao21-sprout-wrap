@@ -22,6 +22,7 @@ recipes:
 - sambao21_workstation::ctags_for_ruby
 - sambao21_workstation::vimrc
 - sambao21_workstation::jing
+- sambao21_workstation::skype2
 - sambao21_workstation::pacifist
 - sambao21_workstation::vitamin-r
 - sambao21_workstation::sidplay
