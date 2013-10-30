@@ -26,10 +26,14 @@ recipes:
 - sambao21_workstation::sidplay
 - sambao21_workstation::addloginitem
 - sambao21_workstation::macbreakz
+##- sambao21_workstation::coda
 - sambao21_workstation::clementine
 - sambao21_workstation::slife
+##- sambao21_workstation::onyx
 - sambao21_workstation::emacs
+##- sambao21_workstation::opera
 - sambao21_workstation::i-stumbler
+##- sambao21_workstation::calibre
 - sambao21_workstation::the-unarchiver
 - sambao21_workstation::gimp
 - sambao21_workstation::fluid
@@ -55,15 +59,12 @@ recipes:
 - sambao21_workstation::google_voice_and_video
 - sambao21_workstation::iterm2
 - sprout-osx-apps::pg_admin
-#- sprout-osx-apps::firefox
-- sambao21_workstation::firefox
-#- sprout-osx-apps::chrome
-- sambao21_workstation::google-chrome
-#- pivotal_workstation::bettertouchtool
-- sambao21_workstation::bettertouchtool
 #- sprout-osx-apps::dropbox
+##- sprout-osx-apps::firefox
+#- sambao21_workstation::firefox
+##- sprout-osx-apps::chrome
+#- sambao21_workstation::bettertouchtool
 - sambao21_workstation::dropbox
-#- sprout-osx-apps::sourcetree
 - sambao21_workstation::sourcetree
 - sambao21_workstation::spotify
 - sambao21_workstation::google_drive
@@ -76,7 +77,7 @@ recipes:
 - sambao21_workstation::unity4_shaders
 - sambao21_workstation::changes
 - sambao21_workstation::steam
-- sambao21_workstation::charles
+##- sambao21_workstation::charles
 node_attributes:
   versions:
     rvm: stable
