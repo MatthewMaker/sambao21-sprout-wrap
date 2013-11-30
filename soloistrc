@@ -1,4 +1,5 @@
 recipes:
+- sambao21_workstation::ccc
 - sambao21_workstation::aptanastudio3
 - sambao21_workstation::texturepacker
 - sambao21_workstation::developermode
